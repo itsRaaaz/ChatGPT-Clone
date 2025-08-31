@@ -3,19 +3,28 @@
   height: 100vh;
   flex: 1;
   color: var(--color);
+  display: flex;
+  flex-direction: column;
 }
+
+/* Top & bottom layout */
 .topsection {
-  width: 100%;
-  height: 75vh;
+  flex: 1; /* flexible height instead of fixed 75vh */
+  overflow-y: auto;
 }
+
 .bottomsection {
   width: 100%;
-  height: 25vh;
+  min-height: 70px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap; /* allow stacking on small screens */
 }
+
+/* Headings */
 .headings {
   width: 100%;
   height: 100%;
@@ -24,10 +33,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-size: 3vmax;
+  font-size: clamp(1.2rem, 2.5vmax, 3rem);
+  text-align: center;
+  padding: 10px;
 }
+
 .headings span:nth-child(1) {
-  font-size: 3em;
+  font-size: clamp(1.8rem, 4vw, 3em);
   font-weight: 600;
   background: linear-gradient(to right, red, blue);
   color: transparent;
@@ -35,86 +47,98 @@
 }
 
 .headings span:nth-child(2) {
-  font-size: 2em;
+  font-size: clamp(1.5rem, 3.5vw, 2em);
   font-weight: 600;
   background: linear-gradient(to left, red, blue);
   color: transparent;
   background-clip: text;
 }
+
 .headings span:nth-child(3) {
-  font-size: 1.5em;
+  font-size: clamp(1rem, 2.5vw, 1.5em);
   font-weight: 500;
-  /* background: linear-gradient(to left,red,blue);
-     */
-  /* background-clip: text; */
   color: var(--color);
   opacity: 0.8;
 }
+
+/* Input + Send */
 .bottomsection input {
-  width: 50%;
-  height: 60px;
-  padding: 20px;
-  font-size: 20px;
+  flex: 1;
+  min-width: 180px;
+  max-width: 600px;
+  height: 55px;
+  padding: 15px;
+  font-size: 1rem;
   background-color: var(--btn-background-color);
   color: var(--btn-color);
   border-radius: 40px;
   outline: none;
   border: none;
 }
+
 #sendbtn {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   padding: 10px;
   border-radius: 50%;
   border: none;
   background-color: var(--btn-background-color);
-  transition: all 0.5s;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
+  flex-shrink: 0;
 }
+
 #sendbtn:hover {
   background-color: var(--hover-btn-background-color);
 }
+
 #sendbtn svg {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   color: var(--btn-color);
 }
-.userbox {
-  display: flex;
-  gap: 20px;
-  align-items: start;
-  color: var(--color);
-}
+
+/* Chat bubbles */
+.userbox,
 .botbox {
   display: flex;
-  gap: 20px;
-  align-items: start;
+  gap: 15px;
+  align-items: flex-start;
   color: var(--color);
+  flex-wrap: wrap;
 }
+
 .botbox p {
   width: 100%;
-  height: 400px;
-  overflow: auto;
+  max-height: 40vh;
+  overflow-y: auto;
   scrollbar-width: none;
 }
+
+/* Results & loader */
 .result {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   width: 100%;
   height: 100%;
-  padding: 40px 20px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
 }
+
 .result img {
+  max-width: 100%;
+  height: auto;
   filter: drop-shadow(2px 2px 10px black);
 }
+
 .loader {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
+
 .loader hr {
   height: 20px;
   border: none;
@@ -128,6 +152,8 @@
   background-size: 800px 50px;
   animation: loader 2s linear infinite;
 }
+
+/* Animations */
 @keyframes loader {
   0% {
     background-position: -800px 0px;
@@ -137,10 +163,54 @@
   }
 }
 
-@media (max-width: 800px) {
+/* ============================= */
+/* 📱 RESPONSIVE BREAKPOINTS     */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
   .headings {
-    font-size: 1.5vmax;
-    text-align: center;
-    padding: 10px;
+    font-size: clamp(1rem, 2vmax, 2rem);
+  }
+  .bottomsection input {
+    max-width: 500px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .bottomsection {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bottomsection input {
+    width: 100%;
+    height: 50px;
+    font-size: 0.95rem;
+  }
+  #sendbtn {
+    width: 50px;
+    height: 50px;
+  }
+  #sendbtn svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .result {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  .headings span:nth-child(1) {
+    font-size: 1.5rem;
+  }
+  .headings span:nth-child(2) {
+    font-size: 1.2rem;
+  }
+  .headings span:nth-child(3) {
+    font-size: 1rem;
   }
 }

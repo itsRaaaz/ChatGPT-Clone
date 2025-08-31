@@ -1,24 +1,49 @@
-.darkmodebtn{
-    width: 60px;
-    height: 60px;
-    padding: 10px;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--btn-background-color);
-    transition: all 0.5s;
-    cursor: pointer;display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.darkmodebtn svg{
-    width: 30px;
-    height: 30px;
-    color: var(--btn-color);
-
+.darkmodebtn {
+  width: clamp(45px, 5vw, 60px);   /* scales with screen width */
+  height: clamp(45px, 5vw, 60px);
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--btn-background-color);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.darkmodebtn:hover{
-    background-color: var(--hover-btn-background-color);
+.darkmodebtn svg {
+  width: clamp(20px, 4vw, 30px);
+  height: clamp(20px, 4vw, 30px);
+  color: var(--btn-color);
+}
 
+.darkmodebtn:hover {
+  background-color: var(--hover-btn-background-color);
+}
+
+/* 📱 Tablet screens */
+@media (max-width: 1024px) {
+  .darkmodebtn {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+  }
+  .darkmodebtn svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* 📱 Mobile screens */
+@media (max-width: 600px) {
+  .darkmodebtn {
+    width: 45px;
+    height: 45px;
+    padding: 6px;
+  }
+  .darkmodebtn svg {
+    width: 20px;
+    height: 20px;
+  }
 }

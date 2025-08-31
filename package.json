@@ -1,0 +1,25 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsRaaaz/ChatGPT-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/itsRaaaz/ChatGPT-Clone/issues"
+  },
+  "homepage": "https://github.com/itsRaaaz/ChatGPT-Clone#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "react-icons": "^5.5.0"
+  }
+}
